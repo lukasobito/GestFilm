@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGestFilm", "ApiGestFilm\ApiGestFilm.csproj", "{39B1B3D3-084A-4EE6-99B1-6BC98A104A43}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{FABDCF16-E24F-4237-BEC8-F6792E960497}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{9226EAB9-29E2-4F2E-8291-EA94BF76997A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestFilm.Models.Global", "GestFilm.Models.Global\GestFilm.Models.Global.csproj", "{5BCE1EF1-831B-45F2-9B80-192AA0DD2C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestFilm.Interfaces", "GestFilm.Interfaces\GestFilm.Interfaces.csproj", "{93DCFCDC-C07F-45D0-ADB5-B390558345D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestFilm.Forms", "GestFilm.Forms\GestFilm.Forms.csproj", "{C0C50C62-98BA-489A-A189-1C4B7F25376A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39B1B3D3-084A-4EE6-99B1-6BC98A104A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B1B3D3-084A-4EE6-99B1-6BC98A104A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B1B3D3-084A-4EE6-99B1-6BC98A104A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B1B3D3-084A-4EE6-99B1-6BC98A104A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FABDCF16-E24F-4237-BEC8-F6792E960497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABDCF16-E24F-4237-BEC8-F6792E960497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FABDCF16-E24F-4237-BEC8-F6792E960497}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FABDCF16-E24F-4237-BEC8-F6792E960497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FABDCF16-E24F-4237-BEC8-F6792E960497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FABDCF16-E24F-4237-BEC8-F6792E960497}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5BCE1EF1-831B-45F2-9B80-192AA0DD2C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCE1EF1-831B-45F2-9B80-192AA0DD2C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCE1EF1-831B-45F2-9B80-192AA0DD2C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCE1EF1-831B-45F2-9B80-192AA0DD2C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93DCFCDC-C07F-45D0-ADB5-B390558345D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93DCFCDC-C07F-45D0-ADB5-B390558345D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93DCFCDC-C07F-45D0-ADB5-B390558345D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93DCFCDC-C07F-45D0-ADB5-B390558345D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C50C62-98BA-489A-A189-1C4B7F25376A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C50C62-98BA-489A-A189-1C4B7F25376A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C50C62-98BA-489A-A189-1C4B7F25376A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C50C62-98BA-489A-A189-1C4B7F25376A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BCE1EF1-831B-45F2-9B80-192AA0DD2C8D} = {9226EAB9-29E2-4F2E-8291-EA94BF76997A}
+		{93DCFCDC-C07F-45D0-ADB5-B390558345D6} = {9226EAB9-29E2-4F2E-8291-EA94BF76997A}
+		{C0C50C62-98BA-489A-A189-1C4B7F25376A} = {9226EAB9-29E2-4F2E-8291-EA94BF76997A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6ECD991-1E02-4851-9B31-BE9BD7ED5F68}
+	EndGlobalSection
+EndGlobal
