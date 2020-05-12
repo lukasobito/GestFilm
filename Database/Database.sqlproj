@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{fabdcf16-e24f-4237-bec8-f6792e960497}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -59,6 +59,8 @@
     <Folder Include="Table" />
     <Folder Include="Authentifications" />
     <Folder Include="Stored Procedure" />
+    <Folder Include="Role" />
+    <Folder Include="Schemas" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\User.sql" />
@@ -69,5 +71,14 @@
     <Build Include="Authentifications\PostSalt.sql" />
     <Build Include="Authentifications\PreSalt.sql" />
     <Build Include="Stored Procedure\SP_RegisterUser.sql" />
+    <Build Include="Stored Procedure\SP_LoginUser.sql" />
+    <Build Include="Stored Procedure\SP_GetUserGroup.sql" />
+    <Build Include="Schemas\FilmApp.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database.publish.xml" />
+    <None Include="Authentifications\GestFilm_Login.sql" />
+    <None Include="Authentifications\GestFilm_User.sql" />
+    <None Include="Role\AppUser.sql" />
   </ItemGroup>
 </Project>

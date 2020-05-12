@@ -1,0 +1,8 @@
+﻿CREATE USER [GestFilm]
+	FOR LOGIN [GestFilm]
+	WITH DEFAULT_SCHEMA = dbo
+
+GO
+
+GRANT CONNECT TO [GestFilm]
+
