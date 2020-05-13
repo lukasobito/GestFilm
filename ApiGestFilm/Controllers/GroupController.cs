@@ -1,4 +1,5 @@
-﻿using ApiGestFilm.Models.Repositories;
+﻿using ApiGestFilm.Models;
+using ApiGestFilm.Models.Repositories;
 using GestFilm.Interfaces;
 using GestFilm.Models.Global;
 using System;
@@ -23,6 +24,40 @@ namespace ApiGestFilm.Controllers
         public IEnumerable<Group> Get(int userId)
         {
             return groupRepository.Get(userId);
+        }
+
+        [Route("api/Group/GetById/{id:int}")]
+        public Group GetOne(int id)
+        {
+            return groupRepository.GetOne(id);
+        }
+        // api/group
+        public Group Post([FromBody]CreateGroup group)
+        {
+            Group g = new Group()
+            {
+                Name = group.Name
+            };
+            return groupRepository.Insert(g);
+        }
+
+        //Api/group/5
+        public HttpResponseMessage Put(int id, [FromBody]Group group)
+        {
+            if (groupRepository.Update(id, group))
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            else
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
+        }
+
+        //Api/group/5
+        [Route("api/Group/{id:int}")]
+        public HttpResponseMessage Delete(int id)
+        {
+            if (groupRepository.Delete(id))
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            else
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
     }
 }

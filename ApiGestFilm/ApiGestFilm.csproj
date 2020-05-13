@@ -161,8 +161,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateGroup.cs" />
     <Compile Include="Models\Mappers\IDataRecordExtensions.cs" />
     <Compile Include="Models\Repositories\AuthRepository.cs" />
+    <Compile Include="Models\Repositories\EventRepository.cs" />
     <Compile Include="Models\Repositories\GroupRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

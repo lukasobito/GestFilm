@@ -74,6 +74,16 @@
     <Build Include="Stored Procedure\SP_LoginUser.sql" />
     <Build Include="Stored Procedure\SP_GetUserGroup.sql" />
     <Build Include="Schemas\FilmApp.sql" />
+    <Build Include="Stored Procedure\SP_DeleteGroup.sql" />
+    <Build Include="Stored Procedure\SP_CreateGroup.sql" />
+    <Build Include="Stored Procedure\SP_UpdateGroup.sql" />
+    <Build Include="Stored Procedure\SP_GetGroup.sql" />
+    <Build Include="Stored Procedure\SP_CreateEvent.sql" />
+    <Build Include="Stored Procedure\SP_DeleteEvent.sql" />
+    <Build Include="Stored Procedure\SP_GetEvent.sql" />
+    <Build Include="Stored Procedure\SP_GetGroupEvent.sql" />
+    <Build Include="Stored Procedure\SP_GetUserEvent.sql" />
+    <Build Include="Stored Procedure\SP_UpdateEvent.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

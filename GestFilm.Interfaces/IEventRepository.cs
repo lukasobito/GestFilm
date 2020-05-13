@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace GestFilm.Interfaces
 {
-    public interface IGroupRepository<TEntity>
+    public interface IEventRepository<TEntity>
     {
-        IEnumerable<TEntity> Get(int userId);
+        IEnumerable<TEntity> GetByUserId(int userId);
+        IEnumerable<TEntity> GetByGroupId(int groupId);
         TEntity GetOne(int id);
         TEntity Insert(TEntity entity);
         bool Update(int id, TEntity entity);

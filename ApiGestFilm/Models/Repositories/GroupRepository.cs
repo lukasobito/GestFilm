@@ -22,9 +22,12 @@ namespace ApiGestFilm.Models.Repositories
                 DbProviderFactories.GetFactory(ConfigurationManager.ConnectionStrings["GestFilmDB"].ProviderName));
         }
 
-        public bool Delete(int userId, int id)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            Command command = new Command("FilmApp.SP_DeleteGroup", true);
+            command.AddParameter("Id", id);
+
+            return dbConnection.ExecuteNonQuery(command) == 1;
         }
 
         public IEnumerable<Group> Get(int userId)
@@ -35,19 +38,30 @@ namespace ApiGestFilm.Models.Repositories
             return dbConnection.ExecuteReader(command, DbDataReader => DbDataReader.ToGroup());
         }
 
-        public Group Get(int userId, int id)
+        public Group GetOne(int id)
         {
-            throw new NotImplementedException();
+            Command command = new Command("FilmApp.SP_GetGroup", true);
+            command.AddParameter("Id", id);
+
+            return dbConnection.ExecuteReader(command, dr => dr.ToGroup()).SingleOrDefault();
         }
 
         public Group Insert(Group entity)
         {
-            throw new NotImplementedException();
+            Command command = new Command("FilmApp.SP_CreateGroup", true);
+            command.AddParameter("Name", entity.Name);
+
+            entity.Id = (int)dbConnection.ExecuteScalar(command);
+            return entity;
         }
 
         public bool Update(int id, Group entity)
         {
-            throw new NotImplementedException();
+            Command command = new Command("FilmApp.SP_UpdateGroup", true);
+            command.AddParameter("Id", id);
+            command.AddParameter("Name", entity.Name);
+
+            return dbConnection.ExecuteNonQuery(command) == 1;
         }
     }
 }
