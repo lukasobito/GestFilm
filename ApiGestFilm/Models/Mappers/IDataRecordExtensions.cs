@@ -28,5 +28,18 @@ namespace ApiGestFilm.Models.Mappers
                 Name = (string)dataRecord["Name"]
             };
         }
+
+        internal static Event ToEvent(this IDataRecord dataRecord)
+        {
+            return new Event()
+            {
+                Id = (int)dataRecord["Id"],
+                Name = (string)dataRecord["Name"],
+                Film = (string)dataRecord["Film"],
+                DateEvent = (DateTime)dataRecord["DateEvent"],
+                IsDateValid = (bool)dataRecord["IsDateValid"],
+                IsFilmValid = (bool)dataRecord["IsFilmValid"]
+            };
+        }
     }
 }

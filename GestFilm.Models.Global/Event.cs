@@ -9,9 +9,10 @@ namespace GestFilm.Models.Global
     public class Event
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string Film { get; set; }
         public DateTime DateEvent { get; set; }
-        public Boolean IsFilmValid { get; set; }
-        public Boolean IsDateValid { get; set; }
+        public bool IsFilmValid { get; set; }
+        public bool IsDateValid { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using GestFilm.Interfaces;
+﻿using ApiGestFilm.Models.Mappers;
+using GestFilm.Interfaces;
 using GestFilm.Models.Global;
 using System;
 using System.Collections.Generic;
@@ -31,26 +32,52 @@ namespace ApiGestFilm.Models.Repositories
         public IEnumerable<Event> GetByGroupId(int groupId)
         {
             Command command = new Command("FilmApp.SP_GetGroupEvent", true);
+            command.AddParameter("GroupId", true);
+
+            return dbConnection.ExecuteReader(command, dr => dr.ToEvent());
         }
 
         public IEnumerable<Event> GetByUserId(int userId)
         {
             Command command = new Command("FilmApp.SP_GetUserEvent", true);
+            command.AddParameter("UserId", true);
+
+            return dbConnection.ExecuteReader(command, dr => dr.ToEvent());
         }
 
         public Event GetOne(int id)
         {
             Command command = new Command("FilmApp.SP_GetEvent", true);
+            command.AddParameter("Id", id);
+
+            return dbConnection.ExecuteReader(command, dr => dr.ToEvent()).SingleOrDefault();
+
         }
 
         public Event Insert(Event entity)
         {
             Command command = new Command("FilmApp.SP_CreateEvent", true);
+            command.AddParameter("Name", entity.Name);
+            command.AddParameter("Film", entity.Film);
+            command.AddParameter("Date", entity.DateEvent);
+            command.AddParameter("IsFilmValid", entity.IsFilmValid);
+            command.AddParameter("IsDateValid", entity.IsDateValid);
+
+            entity.Id = (int)dbConnection.ExecuteScalar(command);
+            return entity;
         }
 
         public bool Update(int id, Event entity)
         {
             Command command = new Command("FilmApp.SP_UpdateEvent", true);
+            command.AddParameter("Id", id);
+            command.AddParameter("Name", entity.Name);
+            command.AddParameter("Film", entity.Film);
+            command.AddParameter("Date", entity.DateEvent);
+            command.AddParameter("IsFilmValid", entity.IsFilmValid);
+            command.AddParameter("IsDateValid", entity.IsDateValid);
+
+            return dbConnection.ExecuteNonQuery(command) == 1;
         }
     }
 }
