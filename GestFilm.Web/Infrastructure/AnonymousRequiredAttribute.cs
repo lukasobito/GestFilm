@@ -23,7 +23,7 @@ namespace GestFilm.Web.Infrastructure
 
                 if(!(sessionManager.User is null))
                 {
-                    context.Result = new RedirectToActionResult("Index", "Event", null);
+                    context.Result = new RedirectToActionResult("Index", "Group", null);
                 }
             }
         }

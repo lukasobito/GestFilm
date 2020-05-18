@@ -44,7 +44,7 @@ namespace GestFilm.Web.Controllers
                     if(!(user is null))
                     {
                         SessionManager.User = user;
-                        return RedirectToAction("Index", "Event");
+                        return RedirectToAction("Index", "Group");
                     }
 
                     ViewBag.Message = "Incorrect login or password";
