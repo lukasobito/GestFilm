@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GestFilm.Forms;
 using GestFilm.Interfaces;
 using GestFilm.Models.Global;
+using D = GestFilm.Models.Data;
 using GestFilm.Web.Infrastructure;
 using GestFilm.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,7 @@ namespace GestFilm.Web
 
             services.AddSingleton<Uri>(p => new Uri("http://localhost:49579/api/"));
             services.AddSingleton<IAuthRepository<RegisterForm, LoginForm, User>, AuthRepository>();
+            services.AddSingleton<IGroupRepository<D.Group>, GroupRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

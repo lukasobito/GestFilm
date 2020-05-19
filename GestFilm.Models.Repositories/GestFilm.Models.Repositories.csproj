@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GestFilm.Forms\GestFilm.Forms.csproj" />
     <ProjectReference Include="..\GestFilm.Interfaces\GestFilm.Interfaces.csproj" />
+    <ProjectReference Include="..\GestFilm.Models.Data\GestFilm.Models.Data.csproj" />
     <ProjectReference Include="..\GestFilm.Models.Global\GestFilm.Models.Global.csproj" />
   </ItemGroup>
 
