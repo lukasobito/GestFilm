@@ -44,6 +44,7 @@ namespace GestFilm.Web
             services.AddSingleton<Uri>(p => new Uri("http://localhost:49579/api/"));
             services.AddSingleton<IAuthRepository<RegisterForm, LoginForm, User>, AuthRepository>();
             services.AddSingleton<IGroupRepository<D.Group>, GroupRepository>();
+            services.AddSingleton<IEventRepository<D.Event>, EventRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

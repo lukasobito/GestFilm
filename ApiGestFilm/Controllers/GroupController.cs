@@ -32,16 +32,18 @@ namespace ApiGestFilm.Controllers
             return groupRepository.GetOne(id);
         }
         // api/group
-        public Group Post([FromBody]CreateGroup group)
+        [Route("api/Group/{userId:int}")]
+        public Group Post([FromBody]CreateGroup group, int userId)
         {
             Group g = new Group()
             {
                 Name = group.Name
             };
-            return groupRepository.Insert(g);
+            return groupRepository.Insert(g, userId);
         }
 
         //Api/group/5
+        [Route("api/Group/{id:int}")]
         public HttpResponseMessage Put(int id, [FromBody]Group group)
         {
             if (groupRepository.Update(id, group))

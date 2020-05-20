@@ -3,10 +3,11 @@
 	@Film nvarchar(50),
 	@Date datetime,
 	@IsFilmValid bit,
-	@IsDateValid bit
+	@IsDateValid bit,
+	@GroupId int
 AS
 BEGIN
-	INSERT INTO [Event] ([Name], [Film], [Date], [IsFilmValid], [IsDateValid]) 
+	INSERT INTO [Event] ([Name], [Film], [Date], [IsFilmValid], [IsDateValid], [GroupId])
 	OUTPUT INSERTED.Id 
-	VALUES (@Name, @Film, @Date, @IsFilmValid, @IsDateValid);
+	VALUES (@Name, @Film, @Date, @IsFilmValid, @IsDateValid, @GroupId);
 END

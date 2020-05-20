@@ -4,9 +4,10 @@
 	@Film nvarchar(50),
 	@Date datetime,
 	@IsFilmValid bit,
-	@IsDateValid bit
+	@IsDateValid bit,
+	@GroupId int
 AS
 BEGIN
-	UPDATE [Event] SET [Name] = @Name, [Film] = @Film, [Date] = @Date, [IsFilmValid] = @IsFilmValid, [IsDateValid] = @IsDateValid
+	UPDATE [Event] SET [Name] = @Name, [Film] = @Film, [Date] = @Date, [IsFilmValid] = @IsFilmValid, [IsDateValid] = @IsDateValid, [GroupId] = @GroupId
 	WHERE Id = @Id;
 END

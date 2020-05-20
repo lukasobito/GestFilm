@@ -14,5 +14,6 @@ namespace GestFilm.Models.Global
         public DateTime DateEvent { get; set; }
         public bool IsFilmValid { get; set; }
         public bool IsDateValid { get; set; }
+        public int GroupId { get; set; }
     }
 }

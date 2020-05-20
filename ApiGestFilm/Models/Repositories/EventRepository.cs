@@ -62,6 +62,8 @@ namespace ApiGestFilm.Models.Repositories
             command.AddParameter("Date", entity.DateEvent);
             command.AddParameter("IsFilmValid", entity.IsFilmValid);
             command.AddParameter("IsDateValid", entity.IsDateValid);
+            command.AddParameter("GroupId", entity.GroupId);
+
 
             entity.Id = (int)dbConnection.ExecuteScalar(command);
             return entity;
@@ -76,6 +78,7 @@ namespace ApiGestFilm.Models.Repositories
             command.AddParameter("Date", entity.DateEvent);
             command.AddParameter("IsFilmValid", entity.IsFilmValid);
             command.AddParameter("IsDateValid", entity.IsDateValid);
+            command.AddParameter("GroupId", entity.GroupId);
 
             return dbConnection.ExecuteNonQuery(command) == 1;
         }

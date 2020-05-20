@@ -14,10 +14,12 @@ namespace GestFilm.Web.Controllers
     public class GroupController : BaseController
     {
         private readonly IGroupRepository<Group> groupRepository;
+        private readonly IEventRepository<Event> eventRepository;
 
-        public GroupController(IGroupRepository<Group> groupRepository, ISessionManager sessionManager) : base(sessionManager)
+        public GroupController(IGroupRepository<Group> groupRepository, IEventRepository<Event> eventRepository, ISessionManager sessionManager) : base(sessionManager)
         {
             this.groupRepository = groupRepository;
+            this.eventRepository = eventRepository;
         }
 
         [AuthRequired]
@@ -29,7 +31,13 @@ namespace GestFilm.Web.Controllers
         [AuthRequired]
         public ActionResult Details(int id)
         {
-            return View(groupRepository.GetOne(id));
+            InfoGroup infoGroup = new InfoGroup()
+            {
+                Id = id,
+                Name = groupRepository.GetOne(id).Name,
+                events = eventRepository.GetByGroupId(id)
+            };
+            return View(infoGroup);
         }
 
         [AuthRequired]
@@ -47,7 +55,7 @@ namespace GestFilm.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    groupRepository.Insert(new Group(form.Name));
+                    groupRepository.Insert(new Group(form.Name),SessionManager.User.Id);
                     return RedirectToAction("Index");
                 }
 
@@ -71,7 +79,6 @@ namespace GestFilm.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [AuthRequired]
         public ActionResult Edit(int id, CreateGroup form)
         {
@@ -97,9 +104,9 @@ namespace GestFilm.Web.Controllers
             if (SessionManager.User is null)
                 return RedirectToAction("Login", "Auth");
 
-            return View();
+            return View(groupRepository.GetOne(id));
         }
-
+        [HttpPost]
         [AuthRequired]
         public ActionResult Delete(int id, IFormCollection collection)
         {

@@ -1,6 +1,12 @@
 ﻿CREATE PROCEDURE [FilmApp].[SP_CreateGroup]
-	@Name nvarchar(50)
+	@Name nvarchar(50),
+	@UserId int
 AS
 BEGIN
-	INSERT INTO [Group] (Name) OUTPUT inserted.Id VALUES (@name);
+	DECLARE @Id int;
+
+	INSERT INTO [Group] (Name) VALUES (@name);
+	SET @Id = SCOPE_IDENTITY();
+
+	INSERT INTO [UserGroup] (IdGroup,IdUser) OUTPUT @Id VALUES (@Id, @UserId);
 END

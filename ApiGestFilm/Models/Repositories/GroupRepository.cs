@@ -46,10 +46,11 @@ namespace ApiGestFilm.Models.Repositories
             return dbConnection.ExecuteReader(command, dr => dr.ToGroup()).SingleOrDefault();
         }
 
-        public Group Insert(Group entity)
+        public Group Insert(Group entity, int userId)
         {
             Command command = new Command("FilmApp.SP_CreateGroup", true);
             command.AddParameter("Name", entity.Name);
+            command.AddParameter("UserId", userId);
 
             entity.Id = (int)dbConnection.ExecuteScalar(command);
             return entity;

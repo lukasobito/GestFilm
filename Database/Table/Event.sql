@@ -5,5 +5,7 @@
 	IsFilmValid bit NOT NULL DEFAULT 0, 
 	[IsDateValid] bit NOT NULL DEFAULT 0, 
     [Id] INT IDENTITY NOT NULL, 
-    CONSTRAINT [PK_Event] PRIMARY KEY ([Id])
+    [GroupId] INT NOT NULL, 
+    CONSTRAINT [PK_Event] PRIMARY KEY ([Id]), 
+    CONSTRAINT [FK_Event_Group] FOREIGN KEY ([GroupId]) REFERENCES [Group]([Id])
 );

@@ -2,7 +2,7 @@
 	@Id int
 AS
 BEGIN
-	SELECT [Id], [Name], [Film], [Date], [IsFilmValid], [IsDateValid] 
+	SELECT [Id], [Name], [Film], [Date], [IsFilmValid], [IsDateValid], [GroupId] 
 	FROM [Event]
 	WHERE [Id] = @Id;
 END

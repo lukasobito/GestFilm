@@ -43,9 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateGroup.cs" />
+    <Compile Include="InfoGroup.cs" />
     <Compile Include="LoginForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterForm.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GestFilm.Models.Data\GestFilm.Models.Data.csproj">
+      <Project>{04e81a7e-4b41-4ad7-8766-0beed22d1ffc}</Project>
+      <Name>GestFilm.Models.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

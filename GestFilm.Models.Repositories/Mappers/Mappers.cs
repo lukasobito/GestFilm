@@ -12,5 +12,10 @@ namespace GestFilm.Models.Repositories.Mappers
         {
             return new Group(entity.Id, entity.Name);
         }
+
+        internal static Event ToClient(this G.Event entity)
+        {
+            return new Event(entity.Id, entity.Name, entity.Film, entity.DateEvent, entity.GroupId, entity.IsDateValid, entity.IsFilmValid);
+        }
     }
 }

@@ -36,9 +36,10 @@ namespace ApiGestFilm.Models.Mappers
                 Id = (int)dataRecord["Id"],
                 Name = (string)dataRecord["Name"],
                 Film = (string)dataRecord["Film"],
-                DateEvent = (DateTime)dataRecord["DateEvent"],
+                DateEvent = (DateTime)dataRecord["Date"],
                 IsDateValid = (bool)dataRecord["IsDateValid"],
-                IsFilmValid = (bool)dataRecord["IsFilmValid"]
+                IsFilmValid = (bool)dataRecord["IsFilmValid"],
+                GroupId = (int)dataRecord["GroupId"]
             };
         }
     }

@@ -1,4 +1,4 @@
-﻿@model GestFilm.Models.Data.Group
+﻿@model GestFilm.Forms.InfoGroup
 
 @{
     ViewData["Title"] = "Details";
@@ -7,24 +7,64 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Group</h4>
+    <h4>InfoGroup</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
 </div>
+<table class ="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.events)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Film)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEvent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDateValid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFilmValid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupId)
+                </td>
+                <td>
+                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@item.Id">Editer l'event</a> |
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id">Detail de l'event</a> |
+                    <a asp-controller="Event" asp-action="Delete" asp-route-id="@item.Id">Supprimer l'event</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

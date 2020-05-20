@@ -10,7 +10,7 @@ namespace GestFilm.Interfaces
     {
         IEnumerable<TEntity> Get(int userId);
         TEntity GetOne(int id);
-        TEntity Insert(TEntity entity);
+        TEntity Insert(TEntity entity, int userId);
         bool Update(int id, TEntity entity);
         bool Delete(int id);
     }

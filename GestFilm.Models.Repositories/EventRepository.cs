@@ -1,23 +1,24 @@
 ﻿using GestFilm.Interfaces;
+using GestFilm.Models.Data;
 using G = GestFilm.Models.Global;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text;
-using GestFilm.Models.Data;
+using System.Linq;
 using GestFilm.Models.Repositories.Mappers;
 
 namespace GestFilm.Models.Repositories
 {
-    public class GroupRepository : IGroupRepository<Group>
+    public class EventRepository : IEventRepository<Event>
     {
+
         private readonly HttpClient httpClient;
 
-        public GroupRepository(Uri uri)
+        public EventRepository(Uri uri)
         {
             var handler = new HttpClientHandler
             {
@@ -35,49 +36,57 @@ namespace GestFilm.Models.Repositories
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public bool Delete(int id)
+        public IEnumerable<Event> GetByGroupId(int groupId)
         {
-            HttpResponseMessage responseMessage = httpClient.DeleteAsync("group/" + id).Result;
+            HttpResponseMessage responseMessage = httpClient.GetAsync("Event/GetEventByGroupId/" + groupId).Result;
+            responseMessage.EnsureSuccessStatusCode();
+
+            string json = responseMessage.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<G.Event[]>(json).Select(e => e.ToClient());
+        }
+
+        public IEnumerable<Event> GetByUserId(int userId)
+        {
+            HttpResponseMessage responseMessage = httpClient.GetAsync("Event/GetEventByUserId/" + userId).Result;
+            responseMessage.EnsureSuccessStatusCode();
+
+            string json = responseMessage.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<G.Event[]>(json).Select(e => e.ToClient());
+        }
+
+        public Event GetOne(int id)
+        {
+            HttpResponseMessage responseMessage = httpClient.GetAsync("Event/GetById/" + id).Result;
+            responseMessage.EnsureSuccessStatusCode();
+
+            string json = responseMessage.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<G.Event>(json)?.ToClient();
+        }
+
+        public Event Insert(Event entity)
+        {
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage responseMessage = httpClient.PostAsync("Event/", content).Result;
+            responseMessage.EnsureSuccessStatusCode();
+
+            string json = responseMessage.Content.ReadAsStringAsync().Result;
+            G.Event newEvent = JsonConvert.DeserializeObject<G.Event>(json);
+            return newEvent.ToClient();
+        }
+
+        public bool Update(int id, Event entity)
+        {
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage responseMessage = httpClient.PutAsync("Event/" + id, content).Result;
             return responseMessage.IsSuccessStatusCode;
         }
-
-        public IEnumerable<Group> Get(int userId)
+        public bool Delete(int id)
         {
-            HttpResponseMessage responseMessage = httpClient.GetAsync("Group/GetGroupByUserId/" + userId).Result;
-            responseMessage.EnsureSuccessStatusCode();
-
-            string json = responseMessage.Content.ReadAsStringAsync().Result;
-            return JsonConvert.DeserializeObject<G.Group[]>(json).Select(td => td.ToClient());
-        }
-
-        public Group GetOne(int id)
-        {
-            HttpResponseMessage responseMessage = httpClient.GetAsync("Group/GetById/" + id).Result;
-            responseMessage.EnsureSuccessStatusCode();
-
-            string json = responseMessage.Content.ReadAsStringAsync().Result;
-            return JsonConvert.DeserializeObject<G.Group>(json)?.ToClient();
-        }
-
-        public Group Insert(Group entity, int userId)
-        {
-            HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-            HttpResponseMessage responseMessage = httpClient.PostAsync("Group/" + userId, content).Result;
-            responseMessage.EnsureSuccessStatusCode();
-
-            string json = responseMessage.Content.ReadAsStringAsync().Result;
-            G.Group newGroup = JsonConvert.DeserializeObject<G.Group>(json);
-            return newGroup.ToClient();
-        }
-
-        public bool Update(int id, Group entity)
-        {
-            HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-            HttpResponseMessage responseMessage = httpClient.PutAsync("Group/" + id, content).Result;
+            HttpResponseMessage responseMessage = httpClient.DeleteAsync("Event/" + id).Result;
             return responseMessage.IsSuccessStatusCode;
         }
     }
