@@ -83,6 +83,10 @@
     <Build Include="Stored Procedure\SP_GetGroupEvent.sql" />
     <Build Include="Stored Procedure\SP_GetUserEvent.sql" />
     <Build Include="Stored Procedure\SP_UpdateEvent.sql" />
+    <Build Include="Stored Procedure\SP_GetUser.sql" />
+    <Build Include="Stored Procedure\SP_LinkUserGroup.sql" />
+    <Build Include="Stored Procedure\SP_GetUserByIdGroup.sql" />
+    <Build Include="Stored Procedure\SP_UnlinkUserGroup.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

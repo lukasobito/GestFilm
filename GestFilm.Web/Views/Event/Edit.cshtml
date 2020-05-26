@@ -1,0 +1,54 @@
+﻿@model GestFilm.Forms.EditEvent
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Modification de la soirée film</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nom de la soirée film</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Film" class="control-label">Nom du film</label>
+                <input asp-for="Film" class="form-control" />
+                <span asp-validation-for="Film" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateEvent" class="control-label">Date</label>
+                <input asp-for="DateEvent" class="form-control" />
+                <span asp-validation-for="DateEvent" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFilmValid" /> Film validé ?
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDateValid" /> Date validé ?
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupId" class="control-label">Id du group</label>
+                <input asp-for="GroupId" class="form-control" />
+                <span asp-validation-for="GroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+

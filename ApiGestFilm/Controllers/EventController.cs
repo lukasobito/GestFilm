@@ -46,7 +46,8 @@ namespace ApiGestFilm.Controllers
                 Film = ev.Film,
                 DateEvent = ev.DateEvent,
                 IsDateValid = false,
-                IsFilmValid = false
+                IsFilmValid = false,
+                GroupId = ev.GroupId
             };
 
             return eventRepository.Insert(e);

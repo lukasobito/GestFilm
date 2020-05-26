@@ -1,0 +1,38 @@
+﻿@model GestFilm.Forms.CreateEvent
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Création de soirée film</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nom de la soirée film</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Film" class="control-label">Nom du film</label>
+                <input asp-for="Film" class="form-control" />
+                <span asp-validation-for="Film" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateEvent" class="control-label">Date de la soirée film</label>
+                <input asp-for="DateEvent" class="form-control" />
+                <span asp-validation-for="DateEvent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Créer une soirée film" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste des soirées film</a>
+</div>
+

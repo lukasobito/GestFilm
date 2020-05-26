@@ -29,6 +29,18 @@ namespace GestFilm.Web.Infrastructure
             }
         }
 
+        public int IdGroup 
+        {
+            get 
+            {
+                return (session.GetInt32(nameof(IdGroup)) ?? default(int));
+            }
+            set
+            {
+                session.SetInt32(nameof(IdGroup), value);
+            }
+        }
+
         public void Abandon()
         {
             session.Clear();

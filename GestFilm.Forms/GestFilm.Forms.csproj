@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateEvent.cs" />
     <Compile Include="CreateGroup.cs" />
+    <Compile Include="EditEvent.cs" />
     <Compile Include="InfoGroup.cs" />
     <Compile Include="LoginForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GestFilm.Models.Data.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des soirées films</h1>
+<hr />
+<a asp-controller="Group" asp-action="Create">Créer un nouveau Groupe</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom soirée
+            </th>
+            <th>
+                Nom Film
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Film validé ?
+            </th>
+            <th>
+                Date validé ?
+            </th>
+            <th>
+                Id du groupe
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Film)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEvent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFilmValid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDateValid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupId)
+            </td>
+            <td>
+                @Html.ActionLink("Editer", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -4,10 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details du groupe</h1>
 
 <div>
-    <h4>InfoGroup</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -19,17 +18,35 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Editer le groupe", "Edit", new { id = Model.Id }) |
+    <a asp-controller="Event" asp-action="Create" asp-route-id="@Model.Id">Ajouter un event</a> |
+    <a asp-controller="User" asp-action="List" asp-route-id="@Model.Id">Liste des membres du groupe</a> |
+    @Html.ActionLink("Ajouter un membre", "AddUser", new { id = Model.Id }) |
+    <a asp-action="Index">Retour à la liste des groupes</a>
 </div>
 <table class ="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nom
+            </th>
+            <th>
+                Film
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Date validé ? 
+            </th>
+            <th>
+                Film validé ?
+            </th>
+            <th>
+                Id du groupe
             </th>
             <th></th>
         </tr>
@@ -60,9 +77,9 @@
                     @Html.DisplayFor(modelItem => item.GroupId)
                 </td>
                 <td>
-                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@item.Id">Editer l'event</a> |
-                    <a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id">Detail de l'event</a> |
-                    <a asp-controller="Event" asp-action="Delete" asp-route-id="@item.Id">Supprimer l'event</a>
+                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Event" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
                 </td>
             </tr>
         }

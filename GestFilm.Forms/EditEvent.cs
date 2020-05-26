@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ApiGestFilm.Models
+namespace GestFilm.Forms
 {
-    public class CreateEvent
+    public class EditEvent
     {
-        [Required]
-        [MaxLength(50)]
+        public int Id { get; set; }
         public string Name { get; set; }
-        [Required]
-        [MaxLength(50)]
         public string Film { get; set; }
-        [Required]
         public DateTime DateEvent { get; set; }
-        [Required]
+        public bool IsFilmValid { get; set; }
+        public bool IsDateValid { get; set; }
         public int GroupId { get; set; }
     }
 }

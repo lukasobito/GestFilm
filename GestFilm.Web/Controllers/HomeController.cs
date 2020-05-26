@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GestFilm.Web.Models;
+using GestFilm.Web.Infrastructure;
 
 namespace GestFilm.Web.Controllers
 {
@@ -18,12 +19,8 @@ namespace GestFilm.Web.Controllers
             _logger = logger;
         }
 
+        [AuthRequired]
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }

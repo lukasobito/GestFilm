@@ -17,5 +17,10 @@ namespace GestFilm.Models.Repositories.Mappers
         {
             return new Event(entity.Id, entity.Name, entity.Film, entity.DateEvent, entity.GroupId, entity.IsDateValid, entity.IsFilmValid);
         }
+
+        internal static User ToClient(this G.User entity)
+        {
+            return new User(entity.Id, entity.LastName, entity.FirstName, entity.Login);
+        }
     }
 }
