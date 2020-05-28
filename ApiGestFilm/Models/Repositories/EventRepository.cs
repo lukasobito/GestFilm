@@ -32,7 +32,7 @@ namespace ApiGestFilm.Models.Repositories
         public IEnumerable<Event> GetByGroupId(int groupId)
         {
             Command command = new Command("FilmApp.SP_GetGroupEvent", true);
-            command.AddParameter("GroupId", true);
+            command.AddParameter("GroupId", groupId);
 
             return dbConnection.ExecuteReader(command, dr => dr.ToEvent());
         }
@@ -40,7 +40,7 @@ namespace ApiGestFilm.Models.Repositories
         public IEnumerable<Event> GetByUserId(int userId)
         {
             Command command = new Command("FilmApp.SP_GetUserEvent", true);
-            command.AddParameter("UserId", true);
+            command.AddParameter("UserId", userId);
 
             return dbConnection.ExecuteReader(command, dr => dr.ToEvent());
         }

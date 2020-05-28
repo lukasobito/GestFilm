@@ -5,8 +5,9 @@ AS
 BEGIN
 	SELECT u.Id, u.[Login], u.LastName, u.FirstName
 	FROM [User] as u
-	JOIN [UserGroup] as ug ON ug.IdUser = u.Id
+	LEFT JOIN [UserGroup] as ug ON u.Id = ug.IdUser
 	WHERE u.[Login] LIKE CONCAT('%',@Search,'%')
 	AND u.IsActive = 1
-	AND ug.Id != @IdGroup
+	AND (ug.IdGroup != @IdGroup
+	OR ug.IdGroup IS NULL)
 END

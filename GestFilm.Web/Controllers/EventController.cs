@@ -37,7 +37,6 @@ namespace GestFilm.Web.Controllers
         [Route("event/create/{groupId:int}")]
         public ActionResult Create(int groupId)
         {
-            SessionManager.IdGroup = groupId;
             return View();
         }
         [AuthRequired]
@@ -50,11 +49,10 @@ namespace GestFilm.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if(SessionManager.IdGroup != default(int))
+                    if(groupId != default(int))
                     {
-                        Event newEvent = new Event(createEvent.Name, createEvent.Film, createEvent.DateEvent, SessionManager.IdGroup);
+                        Event newEvent = new Event(createEvent.Name, createEvent.Film, createEvent.DateEvent, groupId);
                         eventRepository.Insert(newEvent);
-                        SessionManager.IdGroup = default(int);
                         return RedirectToAction("Index");
                     }
                     return View("Error");
