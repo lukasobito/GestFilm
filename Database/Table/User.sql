@@ -5,5 +5,6 @@
     [FirstName] NVARCHAR(50) NOT NULL, 
     [Login] NVARCHAR(50) NOT NULL, 
     [Password] NVARCHAR(30) NOT NULL, 
-    [IsActive] BIT NOT NULL DEFAULT 1
+    [IsActive] BIT NOT NULL DEFAULT 1, 
+    [token] NCHAR(255) NOT NULL
 )

@@ -23,8 +23,8 @@ namespace ApiGestFilm.Controllers
         [Route("api/Event/GetEventByUserId/{userId:int}")]
         public IEnumerable<Event> GetEventByUserId(int userId)
         {
-            IEnumerable<Event> events = eventRepository.GetByUserId(userId);
-            return events;
+            //IEnumerable<Event> events = eventRepository.GetByUserId(userId);
+            return null;
         }
 
         [Route("api/Event/GetEventByGroupId/{groupId:int}")]

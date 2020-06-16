@@ -4,9 +4,9 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Connexion</h1>
-<hr />
-<div class="row">
+@*<h1>Connexion</h1>
+<hr />*@
+@*<div class="row">
     <div class="col-md-4">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,13 +26,34 @@
         </form>
     </div>
 </div>
-Pas encore de compte ? <a asp-controller="Auth" asp-action="Register">Créer un nouveau compte ici</a>
+Pas encore de compte ? <a asp-controller="Auth" asp-action="Register">Créer un nouveau compte ici</a>*@
 
-@if(!(ViewBag.Message is null))
-{
-    <p class="text-danger">@ViewBag.Message</p>
-}
+                       <div class="login-clean">
+                           <form method="post" asp-action="Login">
+                               <h2 >Connexion</h2>
+                               @if (!(ViewBag.Message is null))
+                               {
+                                   <p class="text-danger">@ViewBag.Message</p>
+                               }
+                               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                               <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+                               <div class="form-group">
+                                   <input asp-for="Login" class="form-control" placeholder="Login">
+                                   <span asp-validation-for="Login" class="text-danger"></span>
+                               </div>
+                               <div class="form-group">
+                                   <input asp-for="Password" class="form-control" placeholder="Mot de passe">
+                                   <span asp-validation-for="Password" class="text-danger"></span>
+                               </div>
+                               <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Se connecter</button></div><a asp-controller="Auth" asp-action="Register" class="forgot">Vous n'avez pas encore de compte ?</a>
+                           </form>
+                       </div>
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<link rel="stylesheet" href="~/css/Login-Form-Clean.css" />

@@ -13,7 +13,7 @@ using ToolBox.Connections;
 
 namespace ApiGestFilm.Models.Repositories
 {
-    public class AuthRepository: IAuthRepository<RegisterForm, LoginForm, User>
+    public class AuthRepository : IAuthRepository<RegisterForm, LoginForm, User>
     {
         private IConnection dbConnection;
 

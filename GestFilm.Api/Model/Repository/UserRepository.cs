@@ -1,25 +1,33 @@
-﻿using ApiGestFilm.Models.Mappers;
+﻿using GestFilm.Api.Model.Mappers;
 using GestFilm.Interfaces;
 using GestFilm.Models.Global;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using ToolBox.Connections;
 
-namespace ApiGestFilm.Models.Repositories
+namespace GestFilm.Api.Model.Repository
 {
     public class UserRepository : IUserRepository<User>
     {
         private IConnection dbConnection;
 
-        public UserRepository()
+        public UserRepository(IOptions<ConnectionHelper> options)
         {
-            dbConnection = new Connection(
-                ConfigurationManager.ConnectionStrings["GestFilmDB"].ConnectionString,
-                DbProviderFactories.GetFactory(ConfigurationManager.ConnectionStrings["GestFilmDB"].ProviderName));
+            ConnectionHelper connection = options.Value;
+            DbProviderFactories.RegisterFactory(connection.ProviderName, SqlClientFactory.Instance);
+
+            // Get the provider invariant names
+            IEnumerable<string> invariants = DbProviderFactories.GetProviderInvariantNames(); // => 1 result; 'test'
+
+            // Get a factory using that name
+            DbProviderFactory factory = DbProviderFactories.GetFactory(invariants.FirstOrDefault());
+
+            dbConnection = new Connection(connection.ConnectionString, factory);
         }
 
         public bool Delete(int idGroup, int idUser)

@@ -20,7 +20,10 @@ namespace GestFilm.Models.Repositories.Mappers
 
         internal static User ToClient(this G.User entity)
         {
-            return new User(entity.Id, entity.LastName, entity.FirstName, entity.Login);
+            return new User(entity.Id, entity.LastName, entity.FirstName, entity.Login)
+            {
+                Token = entity.Token
+            };
         }
     }
 }

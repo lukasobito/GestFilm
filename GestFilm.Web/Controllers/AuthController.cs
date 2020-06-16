@@ -47,11 +47,11 @@ namespace GestFilm.Web.Controllers
                         return RedirectToAction("Index", "Event");
                     }
 
-                    ViewBag.Message = "Incorrect login or password";
+                    ViewBag.Message = "Login ou mot de passe incorrect";
                 }
                 catch(Exception e)
                 {
-                    return View("Error");
+                    return View(e.Message);
                 }
             }
             return View(loginForm);

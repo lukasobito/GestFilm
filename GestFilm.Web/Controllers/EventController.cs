@@ -24,7 +24,7 @@ namespace GestFilm.Web.Controllers
         [AuthRequired]
         public IActionResult Index()
         {
-            return View(eventRepository.GetByUserId(SessionManager.User.Id));
+            return View(eventRepository.GetByUserId(SessionManager.User.Id, SessionManager.User.Token));
         }
 
         [AuthRequired]

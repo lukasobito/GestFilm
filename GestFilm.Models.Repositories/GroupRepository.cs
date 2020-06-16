@@ -35,12 +35,6 @@ namespace GestFilm.Models.Repositories
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public bool Delete(int id)
-        {
-            HttpResponseMessage responseMessage = httpClient.DeleteAsync("group/" + id).Result;
-            return responseMessage.IsSuccessStatusCode;
-        }
-
         public IEnumerable<Group> Get(int userId)
         {
             HttpResponseMessage responseMessage = httpClient.GetAsync("Group/GetGroupByUserId/" + userId).Result;
@@ -64,7 +58,7 @@ namespace GestFilm.Models.Repositories
             HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            HttpResponseMessage responseMessage = httpClient.PostAsync("Group/" + userId, content).Result;
+            HttpResponseMessage responseMessage = httpClient.PostAsync("Group/create/" + userId, content).Result;
             responseMessage.EnsureSuccessStatusCode();
 
             string json = responseMessage.Content.ReadAsStringAsync().Result;
@@ -77,7 +71,13 @@ namespace GestFilm.Models.Repositories
             HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            HttpResponseMessage responseMessage = httpClient.PutAsync("Group/" + id, content).Result;
+            HttpResponseMessage responseMessage = httpClient.PutAsync("Group/update/" + id, content).Result;
+            return responseMessage.IsSuccessStatusCode;
+        }
+
+        public bool Delete(int id)
+        {
+            HttpResponseMessage responseMessage = httpClient.DeleteAsync("group/delete/" + id).Result;
             return responseMessage.IsSuccessStatusCode;
         }
     }

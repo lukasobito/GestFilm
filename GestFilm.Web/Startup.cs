@@ -41,7 +41,7 @@ namespace GestFilm.Web
             services.AddHttpContextAccessor();
             services.AddTransient<ISessionManager, SessionManager>();
 
-            services.AddSingleton<Uri>(p => new Uri("http://localhost:49579/api/"));
+            services.AddSingleton<Uri>(p => new Uri("http://localhost:53478/api/"));
             services.AddSingleton<IAuthRepository<RegisterForm, LoginForm, User>, AuthRepository>();
             services.AddSingleton<IGroupRepository<D.Group>, GroupRepository>();
             services.AddSingleton<IEventRepository<D.Event>, EventRepository>();

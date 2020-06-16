@@ -34,6 +34,7 @@ namespace GestFilm.Models.Repositories
             httpClient.BaseAddress = uri;
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            
         }
 
         public IEnumerable<Event> GetByGroupId(int groupId)
@@ -45,8 +46,9 @@ namespace GestFilm.Models.Repositories
             return JsonConvert.DeserializeObject<G.Event[]>(json).Select(e => e.ToClient());
         }
 
-        public IEnumerable<Event> GetByUserId(int userId)
+        public IEnumerable<Event> GetByUserId(int userId, string token)
         {
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             HttpResponseMessage responseMessage = httpClient.GetAsync("Event/GetEventByUserId/" + userId).Result;
             responseMessage.EnsureSuccessStatusCode();
 
@@ -68,7 +70,7 @@ namespace GestFilm.Models.Repositories
             HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            HttpResponseMessage responseMessage = httpClient.PostAsync("Event/", content).Result;
+            HttpResponseMessage responseMessage = httpClient.PostAsync("Event/create", content).Result;
             responseMessage.EnsureSuccessStatusCode();
 
             string json = responseMessage.Content.ReadAsStringAsync().Result;
@@ -81,12 +83,12 @@ namespace GestFilm.Models.Repositories
             HttpContent content = new StringContent(JsonConvert.SerializeObject(entity));
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            HttpResponseMessage responseMessage = httpClient.PutAsync("Event/" + id, content).Result;
+            HttpResponseMessage responseMessage = httpClient.PutAsync("Event/update/" + id, content).Result;
             return responseMessage.IsSuccessStatusCode;
         }
         public bool Delete(int id)
         {
-            HttpResponseMessage responseMessage = httpClient.DeleteAsync("Event/" + id).Result;
+            HttpResponseMessage responseMessage = httpClient.DeleteAsync("Event/delete/" + id).Result;
             return responseMessage.IsSuccessStatusCode;
         }
     }

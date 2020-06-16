@@ -30,7 +30,7 @@
                 @Html.ActionLink("Supprimer", "Delete", new { id = item.Id }) |
                 <a asp-controller="User" asp-action="List" asp-route-id="@item.Id">Liste des membres du groupe</a> |
                 <a asp-controller="User" asp-action="Search" asp-route-idGroup="@item.Id">Ajouter un membre</a> |
-                <a asp-controller="Event" asp-action="Create" asp-route-id="@item.Id">Ajouter un event</a> |
+                <a asp-controller="Event" asp-action="Create" asp-route-id="@item.Id">Ajouter un event</a>
             </td>
         </tr>
 }

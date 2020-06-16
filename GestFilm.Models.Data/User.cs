@@ -10,6 +10,8 @@ namespace GestFilm.Models.Data
         private string login;
         private string lastName;
         private string firstName;
+        private string token;
+
         public int Id
         {
             get { return id; }
@@ -33,6 +35,13 @@ namespace GestFilm.Models.Data
             get { return login; }
             set { login = value; }
         }
+
+        public string Token
+        {
+            get { return token; }
+            set { token = value; }
+        }
+
         public User(int id, string lastName, string firstName, string login)
         {
             Id = id;

@@ -41,6 +41,7 @@ namespace GestFilm.Web.Controllers
         public ActionResult List(int idGroup)
         {
             ViewBag.Message = SessionManager.User.Id;
+            ViewBag.Token = SessionManager.User.Token;
             SessionManager.IdGroup = idGroup;
             return View(userRepository.Get(idGroup));
         }
