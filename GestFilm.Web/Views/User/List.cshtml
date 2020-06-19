@@ -1,45 +1,47 @@
 ﻿@model IEnumerable<GestFilm.Models.Data.User>
 
-    <p>
-        @*Ajouter un nouveau membre*@
-        @ViewBag.Token
-    </p>
+
+<h1>Liste des membres du groupe</h1>
+<hr />
+<div>
+    @Html.ActionLink("Ajouter un membre au groupe", "Search", new { id = ViewBag.IdGroup })
+</div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                Prénom
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                Nom
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Login)
+                Pseudo
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-                
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login)
-            </td>
-            
-            @if (item.Id != (int)ViewBag.Message)
-            {
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
-                    @Html.ActionLink("Retirer du groupe", "Delete", new { idUser = item.Id })
+                    @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-            }
-        </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+
+                @if (item.Id != (int)ViewBag.Message)
+                {
+                    <td>
+                        @Html.ActionLink("Retirer du groupe", "Delete", new { idUser = item.Id })
+                    </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>

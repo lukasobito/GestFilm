@@ -19,29 +19,32 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Event" asp-action="Index">Soirées</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Group" asp-action="Index">Groupes</a>
-                        </li>
-                    </ul>
-                        @if (ViewBag.IsLogged == false)
-                        {
-                            <span class="nav-item ml-auto">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Login">Connexion</a>
-                            </span>
-                            <span class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Register">S'enregistrer</a>
-                            </span>
-                        }
-                        else
-                        {
-                            <span class="nav-item ml-auto">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Logout">Se déconnecter</a>
-                            </span>
-                        }
+                    @if (ViewBag.IsLogged == true)
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Event" asp-action="Index">Soirées</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Group" asp-action="Index">Groupes</a>
+                            </li>
+                        </ul>
+                    }
+                    @if (ViewBag.IsLogged == false)
+                    {
+                        <span class="nav-item ml-auto">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Login">Connexion</a>
+                        </span>
+                        <span class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Register">S'enregistrer</a>
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="nav-item ml-auto">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Logout">Se déconnecter</a>
+                        </span>
+                    }
                 </div>
             </div>
         </nav>

@@ -55,7 +55,8 @@ namespace GestFilm.Api.Controllers
 
         [Route("login/")]
         [HttpPost]
-        public IActionResult Login(LoginForm loginForm)
+
+        public User Login(LoginForm loginForm)
         {
             if (!(loginForm is null) && ModelState.IsValid)
             {
@@ -63,12 +64,12 @@ namespace GestFilm.Api.Controllers
                 {
                     User user = authRepository.Login(loginForm);
 
-                    
-                    return Ok(user);
+
+                    return user;
                 }
                 catch (Exception e)
                 {
-                    return BadRequest("PAS BON");
+                    return null;
                 }
             }
 
@@ -76,7 +77,30 @@ namespace GestFilm.Api.Controllers
                 ? new StringContent(JsonConvert.SerializeObject(ModelState))
                 : new StringContent("There si no Data !");
 
-            return BadRequest(content);
+            return null;
         }
+        //public IActionResult Login(LoginForm loginForm)
+        //{
+        //    if (!(loginForm is null) && ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            User user = authRepository.Login(loginForm);
+
+
+        //            return Ok(user);
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return BadRequest("PAS BON");
+        //        }
+        //    }
+
+        //    HttpContent content = (!(loginForm is null))
+        //        ? new StringContent(JsonConvert.SerializeObject(ModelState))
+        //        : new StringContent("There si no Data !");
+
+        //    return BadRequest(content);
+        //}
     }
 }

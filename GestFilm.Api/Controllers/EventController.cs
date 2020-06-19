@@ -25,7 +25,7 @@ namespace GestFilm.Api.Controllers
         {
             this.eventRepository = eventRepository;
         }
-        [Authorize]
+        
         [Route("GetEventByUserId/{userId:int}")]
         public IEnumerable<Event> GetEventByUserId(int userId)
         {
@@ -44,6 +44,8 @@ namespace GestFilm.Api.Controllers
         {
             return eventRepository.GetOne(id);
         }
+
+        [Authorize]
         [Route("create")]
         public Event Post([FromBody]CreateEvent ev)
         {

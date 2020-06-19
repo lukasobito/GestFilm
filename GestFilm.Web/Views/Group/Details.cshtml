@@ -10,7 +10,7 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            Nom du groupe
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
@@ -19,9 +19,9 @@
 </div>
 <div>
     @Html.ActionLink("Editer le groupe", "Edit", new { id = Model.Id }) |
-    <a asp-controller="Event" asp-action="Create" asp-route-id="@Model.Id">Ajouter un event</a> |
+    <a asp-controller="Event" asp-action="Create" asp-route-id="@Model.Id">Ajouter une soirée film</a> |
     <a asp-controller="User" asp-action="List" asp-route-id="@Model.Id">Liste des membres du groupe</a> |
-    @Html.ActionLink("Ajouter un membre", "AddUser", new { id = Model.Id }) |
+    <a asp-controller="User" asp-action="Search" asp-route-id="@Model.Id">Ajouter un membre</a> |
     <a asp-action="Index">Retour à la liste des groupes</a>
 </div>
 <table class ="table">
@@ -45,9 +45,9 @@
             <th>
                 Film validé ?
             </th>
-            <th>
+            @*<th>
                 Id du groupe
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -73,9 +73,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IsFilmValid)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.GroupId)
-                </td>
+                </td>*@
                 <td>
                     <a asp-controller="Event" asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
                     <a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id">Details</a> |
